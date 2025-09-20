@@ -1,0 +1,125 @@
+/*================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+
+// Progress Bar Custom
+
+.progress-height{
+  height: 30px;
+}
+.v-select{
+  border: 1px solid  #1c75bc !important;
+  border-radius: 5px !important;
+}
+table.vgt-table {
+  font-size: 12px !important;
+}
+
+
+// Report Tables
+.reportTable{
+  width:100%
+}
+.reportTable tr .whiteHeader{
+  background-color: var(--white);
+  color: var(--dark);
+  height: 2.8em;
+}
+.reportTable tr th{
+  background-color: var(--primary);
+  color: var(--light);
+  height: 2.8em;
+}
+.reportTable td, .reportTable th {
+  border: 1px solid #a2a2a2;
+  padding: 4px;
+}
+.reportTable .subheader{
+  font-weight: 700;
+  height: 2.4em;
+}
+
+
+// Vue-good-table report styles
+.extraRow{
+  font-weight: 700;
+}
+.extraRowBlue{
+  background-color: var(--primary);
+  color: var(--light);
+  border: 1px solid #a2a2a2;
+  padding: 10px 4px;
+  text-align: center;
+  font-size: 12px;
+}
+.extraRowWhite{
+  border: 1px solid #a2a2a2;
+  padding: 10px 4px;
+  text-align: center;
+  font-size: 12px;
+}
+.headerBlue{
+  background-color: var(--primary) !important;
+  color: var(--light) !important;
+}
+.headerWhite{
+  background-color: var(--light) !important;
+  color: var(--dark) !important;
+}
+.headerCenter .ag-header-group-cell-label span{
+  margin: 0 auto;
+}
+.headerWhite .ag-header-group-cell-label span{
+  margin: 0 auto;
+}
+.errorMsg{
+  padding: 14px;
+  border-left: 2px red solid;
+  color: red;
+}
+.errorCell{
+  color: red;
+}
+.apiMessage{
+  color: var(--primary) !important;
+  font-size: 1.1em;
+}
+.apiMessage::before{
+  content: '⚠️ ';
+}
+
+// Ag.Grid Custom
+@import "~ag-grid-community/styles/agGridMaterialFont.css";
+
+.ag-gridContainer{
+  padding-bottom: 60px;
+}
+.ag-theme-alpine {
+  --ag-header-foreground-color: white !important;
+  --ag-header-background-color: var(--primary) !important;
+  --ag-font-size: 12px !important;
+  --ag-font-family: "Poppins", Helvetica, Arial, serif !important;
+  --ag-icon-font-family: agGridMaterial;
+}
+.ag-theme-alpine .ag-header-group-cell {
+
+}
+
+// button Link
+.detailsLink{
+  background-color: #e8e8e8;
+  color: #a2a2a2;
+  padding: 5px 8px;
+  border-radius: 4px;
+  box-shadow: 2px 3px 3px #55555557;
+  text-transform: none;
+  font-size: 12px;
+}
+.detailsLink:hover{
+  color: #606060;
+  background-color: #f3f3f3;
+}

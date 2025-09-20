@@ -1,0 +1,555 @@
+{
+  "atoms": [
+    {
+      "ID_ATOMO": 1,
+      "ATOMO": "AT01",
+      "DESCRIPCION": "Átomo Contable"
+    },
+    {
+      "ID_ATOMO": 2,
+      "ATOMO": "AT02",
+      "DESCRIPCION": "Átomo Depósitos"
+    },
+    {
+      "ID_ATOMO": 3,
+      "ATOMO": "AT03",
+      "DESCRIPCION": "Átomo Crédito"
+    },
+    {
+      "ID_ATOMO": 4,
+      "ATOMO": "AT04",
+      "DESCRIPCION": "Átomo de Bienes Adjudicados"
+    },
+    {
+      "ID_ATOMO": 5,
+      "ATOMO": "AT05",
+      "DESCRIPCION": "Átomo Generales del Banco"
+    },
+    {
+      "ID_ATOMO": 7,
+      "ATOMO": "AT07",
+      "DESCRIPCION": "Átomo Liquidez Mensual"
+    },
+    {
+      "ID_ATOMO": 8,
+      "ATOMO": "AT08",
+      "DESCRIPCION": "Átomo de Efectivo"
+    },
+    {
+      "ID_ATOMO": 9,
+      "ATOMO": "AT09",
+      "DESCRIPCION": "Átomo de Tasas"
+    },
+    {
+      "ID_ATOMO": 10,
+      "ATOMO": "AT10",
+      "DESCRIPCION": "Átomo Liquidez Semanal"
+    },
+    {
+      "ID_ATOMO": 11,
+      "ATOMO": "AT11",
+      "DESCRIPCION": "Atomo de Efectivo Semanal"
+    },
+    {
+      "ID_ATOMO": 12,
+      "ATOMO": "AT12",
+      "DESCRIPCION": "Átomo Garantías"
+    },
+    {
+      "ID_ATOMO": 13,
+      "ATOMO": "AT13",
+      "DESCRIPCION": "Átomo Financiero Tenedoras"
+    },
+    {
+      "ID_ATOMO": 14,
+      "ATOMO": "AT14",
+      "DESCRIPCION": "Átomo de Monedas"
+    },
+    {
+      "ID_ATOMO": 15,
+      "ATOMO": "AT15",
+      "DESCRIPCION": "Átomo Inversiones"
+    },
+    {
+      "ID_ATOMO": 21,
+      "ATOMO": "AT21",
+      "DESCRIPCION": "Átomo Contable AT21"
+    },
+    {
+      "ID_ATOMO": 101,
+      "ATOMO": "BAN01",
+      "DESCRIPCION": "Ban Tipo de Establecimiento "
+    },
+    {
+      "ID_ATOMO": 102,
+      "ATOMO": "BAN02",
+      "DESCRIPCION": "Ban Consolidado de las Subsidiarias "
+    },
+    {
+      "ID_ATOMO": 103,
+      "ATOMO": "BAN03",
+      "DESCRIPCION": "Ban Grupos Economicos"
+    },
+    {
+      "ID_ATOMO": 104,
+      "ATOMO": "BAN04",
+      "DESCRIPCION": "Ban Tasa de Interes Activos y Pasivos"
+    },
+    {
+      "ID_ATOMO": 105,
+      "ATOMO": "BAN05",
+      "DESCRIPCION": "Ban Adecuación de Capital"
+    },
+    {
+      "ID_ATOMO": 106,
+      "ATOMO": "BAN06",
+      "DESCRIPCION": "Ban Operaciones fuera de Balances"
+    },
+    {
+      "ID_ATOMO": 107,
+      "ATOMO": "BAN07",
+      "DESCRIPCION": "Ban Bienes Adquiridos"
+    },
+    {
+      "ID_ATOMO": 108,
+      "ATOMO": "BAN08",
+      "DESCRIPCION": "Ban Banca Electrónica"
+    },
+    {
+      "ID_ATOMO": 109,
+      "ATOMO": "BAN09",
+      "DESCRIPCION": "Ban Derivados"
+    },
+    {
+      "ID_ATOMO": 110,
+      "ATOMO": "BAN10",
+      "DESCRIPCION": "Ban Provisión Dinámica"
+    },
+    {
+      "ID_ATOMO": 111,
+      "ATOMO": "BAN11",
+      "DESCRIPCION": "Cuentas Inactivas"
+    },
+    {
+      "ID_ATOMO": 121,
+      "ATOMO": "BAN21",
+      "DESCRIPCION": "Ban Consolidado de las Subsidiarias BA21"
+    },
+    {
+      "ID_ATOMO": 200,
+      "ATOMO": "AT02E",
+      "DESCRIPCION": "Átomo Depósitos Extendido"
+    },
+    {
+      "ID_ATOMO": 201,
+      "ATOMO": "AT12E",
+      "DESCRIPCION": "Átomo Garantías Extendido"
+    },
+    {
+      "ID_ATOMO": 300,
+      "ATOMO": "TR01",
+      "DESCRIPCION": "Átomo Transferencias"
+    },
+    {
+      "ID_ATOMO": 301,
+      "ATOMO": "EVAP",
+      "DESCRIPCION": "Liquidez Estructura de Activos y Pasivos"
+    },
+    {
+      "ID_ATOMO": 901,
+      "ATOMO": "SBCAPA",
+      "DESCRIPCION": "SBCAP - A"
+    },
+    {
+      "ID_ATOMO": 902,
+      "ATOMO": "SBCAPB",
+      "DESCRIPCION": "SBCAP - B"
+    },
+    {
+      "ID_ATOMO": 903,
+      "ATOMO": "SBCAPC",
+      "DESCRIPCION": "SBCAP - C"
+    },
+    {
+      "ID_ATOMO": 904,
+      "ATOMO": "SBCAPD",
+      "DESCRIPCION": "SBCAP - D"
+    },
+    {
+      "ID_ATOMO": 905,
+      "ATOMO": "SBCAPE",
+      "DESCRIPCION": "SBCAP - E"
+    },
+    {
+      "ID_ATOMO": 1003,
+      "ATOMO": "AT03_CINU",
+      "DESCRIPCION": "Átomo Crédito - CINU"
+    },
+    {
+      "ID_ATOMO": 1004,
+      "ATOMO": "BAN04_CINU",
+      "DESCRIPCION": "Ban Tasa de Interes Activos y Pasivos - CINU"
+    },
+    {
+      "ID_ATOMO": 1006,
+      "ATOMO": "BAN06_CINU",
+      "DESCRIPCION": "Ban Operaciones fuera de Balances - CINU"
+    },
+    {
+      "ID_ATOMO": 1015,
+      "ATOMO": "AT05_CINU",
+      "DESCRIPCION": "Átomo Inversiones - CINU"
+    }
+  ],
+  "atomsFields": [
+    {
+      "ID_ATOMO": 1,
+      "CAMPO": "COD_REGION_SB03"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "ORIGEN + COD_REGION_SB03"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "TIPO_DEPOSITO_SB05"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "CLASIFICACION_PRESTAMO_SB19"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "COD_REGION_SB03"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "FACILIDAD_CREDITICIA_SB21"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "NOMBRE_CLIENTE"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "TAMANO_EMPRESA_SB67"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "TIPO_ACTIVIDAD_SB08"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "TIPOCREDITO_SB06"
+    },
+    {
+      "ID_ATOMO": 7,
+      "CAMPO": "COD_RUBRO_SB15"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "CALIF_RIESGO_SB25"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "COD_MONEDA_SB14"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "COD_SECTOR"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "CUSTODIO"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "EMISOR"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "PAIS_EMISOR_SB03"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "TIPO_ACTIVIDAD_SB08"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "CATEGORIA_INSTRUMENTO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "FACILIDAD_CREDITICIA_SB21"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "NOMBRE_EMPRESA"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "NOMBRE_GRUPO_ECONOMICO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "TIPO_EMPRESA"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "TIPO_RELACION_SB07"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "COD_BANCO"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "COD_CUENTA_SB36"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "TIPO_EMPRESA"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "CLASIFICACION_OPERACION_SB19"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "COD_CUENTA_SB02"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "COD_REGION_SB03"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "NOMBRE_CLIENTE"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "NUMERO_OPERACION"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "TIPO_FACILIDAD_SB21"
+    }
+  ],
+  "atomsSumFields": [
+    {
+      "ID_ATOMO": 1,
+      "CAMPO": "COD_REGION_SB03",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "ORIGEN + COD_REGION_SB03",
+      "CAMPO_SUMA": "INTERES_POR_PAGAR"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "ORIGEN + COD_REGION_SB03",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "ORIGEN + COD_REGION_SB03",
+      "CAMPO_SUMA": "MONTO_PIGNORADO"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "TIPO_DEPOSITO_SB05",
+      "CAMPO_SUMA": "INTERES_POR_PAGAR"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "TIPO_DEPOSITO_SB05",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 2,
+      "CAMPO": "TIPO_DEPOSITO_SB05",
+      "CAMPO_SUMA": "MONTO_PIGNORADO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "CLASIFICACION_PRESTAMO_SB19",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "COD_REGION_SB03",
+      "CAMPO_SUMA": "PROVISION"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "COD_REGION_SB03",
+      "CAMPO_SUMA": "PROVISION_NIIF"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "COD_REGION_SB03",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "FACILIDAD_CREDITICIA_SB21",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "NOMBRE_CLIENTE",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "TAMANO_EMPRESA_SB67",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "TIPO_ACTIVIDAD_SB08",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 3,
+      "CAMPO": "TIPOCREDITO_SB06",
+      "CAMPO_SUMA": "SALDO"
+    },
+    {
+      "ID_ATOMO": 7,
+      "CAMPO": "COD_RUBRO_SB15",
+      "CAMPO_SUMA": "VALOR_LIBROS"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "CALIF_RIESGO_SB25",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "COD_MONEDA_SB14",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "COD_SECTOR",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "CUSTODIO",
+      "CAMPO_SUMA": "VALOR_MERCADO"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "CUSTODIO",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "EMISOR",
+      "CAMPO_SUMA": "VALOR_MERCADO"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "EMISOR",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "PAIS_EMISOR_SB03",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "TIPO_ACTIVIDAD_SB08",
+      "CAMPO_SUMA": "VALOR_MERCADO"
+    },
+    {
+      "ID_ATOMO": 15,
+      "CAMPO": "TIPO_ACTIVIDAD_SB08",
+      "CAMPO_SUMA": "VALOR_NOMINAL"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "CATEGORIA_INSTRUMENTO",
+      "CAMPO_SUMA": "SALDO_PRESTAMO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "FACILIDAD_CREDITICIA_SB21",
+      "CAMPO_SUMA": "SALDO_PRESTAMO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "NOMBRE_EMPRESA",
+      "CAMPO_SUMA": "SALDO_PRESTAMO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "NOMBRE_GRUPO_ECONOMICO",
+      "CAMPO_SUMA": "SALDO_PRESTAMO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "TIPO_EMPRESA",
+      "CAMPO_SUMA": "SALDO_PRESTAMO"
+    },
+    {
+      "ID_ATOMO": 103,
+      "CAMPO": "TIPO_RELACION_SB07",
+      "CAMPO_SUMA": "SALDO_PRESTAMO"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "COD_BANCO",
+      "CAMPO_SUMA": "MONTO_INICIAL"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "COD_CUENTA_SB36",
+      "CAMPO_SUMA": "MONTO_INICIAL"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "COD_CUENTA_SB36",
+      "CAMPO_SUMA": "MONTO_PONDERADO"
+    },
+    {
+      "ID_ATOMO": 105,
+      "CAMPO": "TIPO_EMPRESA",
+      "CAMPO_SUMA": "MONTO_INICIAL"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "CLASIFICACION_OPERACION_SB19",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "COD_CUENTA_SB02",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "COD_REGION_SB03",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "NOMBRE_CLIENTE",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "NUMERO_OPERACION",
+      "CAMPO_SUMA": "MONTO"
+    },
+    {
+      "ID_ATOMO": 106,
+      "CAMPO": "TIPO_FACILIDAD_SB21",
+      "CAMPO_SUMA": "MONTO"
+    }
+  ]
+}
