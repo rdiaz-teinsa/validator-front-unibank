@@ -131,7 +131,7 @@
                         <!-- submit buttons -->
                         <b-button
                                 type="submit"
-                                variant="primary"
+                                variant="secondary"
                                 block
                                 :disabled="!licencia || !fechaCorte"
                         >
