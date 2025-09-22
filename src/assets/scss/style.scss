@@ -6,6 +6,14 @@ PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 
 
+// Brand CSS variables for custom usage
+:root {
+  --primary: #fe8136;
+  --light: #f8f8f8;
+  --dark: #4b4b4b;
+}
+
+
 // Progress Bar Custom
 
 .progress-height{
