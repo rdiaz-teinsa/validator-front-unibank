@@ -163,7 +163,8 @@ export default {
         let stylesData = store.getters["app/getBankData"].filter(function (item) {
           return item.value === store.getters["app/getSelectedBank"]
         });
-        this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${this.$route.query.tipo}: ${this.$route.query.idRec} - ${this.descError}`)
+        let transparent = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANAAAAAzCAYAAADmdIZYAAAACXBIWXMAAAsSAAALEgHS3X78AAAApklEQVR4nO3TwQ3AIBDAsNL9dz52IA+EZE+QT9bMfMCZ/3YAvMxAEBgIAgNBYCAIDASBgSAwEAQGgsBAEBgIAgNBYCAIDASBgSAwEAQGgsBAEBgIAgNBYCAIDASBgSAwEAQGgsBAEBgIAgNBYCAIDASBgSAwEAQGgsBAEBgIAgNBYCAIDASBgSAwEAQGgsBAEBgIAgNBYCAIDASBgSAwEAQGgsBAEGy1iANjI9tfTAAAAABJRU5ErkJggg=='
+        this.gridOptions = gridDef(transparent, stylesData[0].color_primary, `${this.$route.query.tipo}: ${this.$route.query.idRec} - ${this.descError}`)
       } catch (err) {
         console.error(err);
       } finally {

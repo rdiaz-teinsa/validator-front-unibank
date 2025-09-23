@@ -2,7 +2,7 @@
   <b-card-code title="">
     <b-row>
       <b-col md="12">
-        <h3>Átomo {{ $route.query.idAtomo }}</h3>
+        <h3>Átomo {{ $route.query.idAtomo }}{{head1}}</h3>
         <span class="font-small-3"></span>
       </b-col>
 
@@ -116,7 +116,9 @@ export default {
     return {
       pageLength: 50,
       dir: false,
-      rows: '',
+      rows: [],
+      head1: '',
+      head2: '',
       columns: [
         {
           headerName: 'Registro #',
@@ -125,19 +127,16 @@ export default {
           headerClass: 'headerBlue',
         },
         {
-          headerName: '',
+          headerName: 'Nombre1',
           field: 'Campo1',
-          headerClass: 'headerBlue',
         },
         {
-          headerName: '',
+          headerName: 'Nombre2',
           field: 'Campo2',
-          headerClass: 'headerBlue',
           cellClass: 'numberType',
           valueFormatter: params => this.currencyFormatFn(params.data.Campo2),
         },
         {
-          headerName: '',
           field: 'action',
           maxWidth: 120,
           cellRenderer: params => this.linkRendererDrill(params.data.Id_Atomo, params.data.No_Registro, params.data.ID_RECORD, params.data.Id_Error),
@@ -170,7 +169,24 @@ export default {
   beforeMount() {
     this.gridOptions = gridDef()
   },
+  watch: {
+    head1() { this.updateColumnHeaders() },
+    head2() { this.updateColumnHeaders() }
+  },
   methods: {
+    updateColumnHeaders() {
+      try {
+        // Index 1 and 2 correspond to Campo1 and Campo2 columns
+        if (this.columns && this.columns.length >= 3) {
+          this.$set(this.columns[1], 'headerName', this.head1 || 'Nombre1')
+          this.$set(this.columns[2], 'headerName', this.head2 || 'Nombre2')
+          if (this.gridApi) {
+            // Re-apply column defs so AG Grid updates header names
+            this.gridApi.setColumnDefs([...this.columns])
+          }
+        }
+      } catch (e) { console.error(e) }
+    },
     async load() {
       try {
         if (this.$route.query.tipo === 'estructural') {
@@ -184,13 +200,22 @@ export default {
                 idError: this.$route.query.idError,
                 usuario: this.$route.query.usuario
               })
-          this.rows = res.data
-          this.apiMessage = res.data.message
-          this.descError = res.data[0].Descripcion
+          this.rows = Array.isArray(res.data) ? res.data : []
+          this.apiMessage = res.data && res.data.message ? res.data.message : ''
+          if (this.rows.length > 0) {
+            this.head1 = this.rows[0].Nombre1 || ''
+            this.head2 = this.rows[0].Nombre2 || ''
+            this.descError = this.rows[0].Descripcion || ''
+          } else {
+            this.head1 = ''
+            this.head2 = ''
+            this.descError = ''
+          }
           let stylesData = store.getters["app/getBankData"].filter(function (item) {
             return item.value === store.getters["app/getSelectedBank"]
           });
           this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${this.$route.query.tipo}: ${this.$route.query.idError} - ${this.descError}`)
+          this.$nextTick(() => this.updateColumnHeaders())
 
         } else {
           this.loading = true;
@@ -202,18 +227,19 @@ export default {
                 idAtomo: this.$route.query.idAtomo,
                 idError: this.$route.query.idError,
               })
-          this.rows = res.data
+          this.rows = Array.isArray(res.data) ? res.data : []
+          if (this.rows.length > 0) {
+            const r0 = this.rows[0]
+            this.head1 = r0.Nombre1 || r0.CAMPO1_NOMBRE || r0.CAMPO1 || r0.Campo1 || ''
+            this.head2 = r0.Nombre2 || r0.CAMPO2_NOMBRE || r0.CAMPO2 || r0.Campo2 || ''
+            this.descError = r0.Descripcion || r0.Desc_Error || ''
+          }
+          this.$nextTick(() => this.updateColumnHeaders())
         }
 
       } catch (err) {
         console.error(err);
       } finally {
-        const headerN1 = document.getElementsByClassName("campo1");
-        headerN1[0].innerHTML = this.rows[0].Nombre1
-
-        const headerN2 = document.getElementsByClassName("campo2");
-        headerN2[0].innerHTML = this.rows[0].Nombre2
-
         this.loading = false;
       }
     },
@@ -227,7 +253,7 @@ export default {
     },
     onGridReady(params) {
       this.gridApi = params.api;
-      this.gridApi.refreshHeader();
+      this.updateColumnHeaders();
       this.gridApi.refreshCells();
     },
     onFilterTextBoxChanged() {
