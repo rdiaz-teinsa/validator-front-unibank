@@ -186,7 +186,7 @@ export default {
             ],
             searchTerm: "",
             loading: false,
-            rows: '',
+            rows: [],
             apiMessage: '',
 gridOptions: gridDef(),
         }
@@ -214,6 +214,9 @@ this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${t
                     })
                 this.rows = res.data.record
               this.apiMessage = res.data.message
+              if (this.gridApi) {
+                this.gridApi.refreshHeader()
+              }
             } catch (err) {
                 console.error(err);
             } finally {
@@ -234,10 +237,16 @@ this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${t
           this.gridApi.refreshCells();
         },
         montoActualHeader(){
-            return this.rows[0].FECHA_ACTUAL.substring(0, 10)
+            if (Array.isArray(this.rows) && this.rows.length && this.rows[0].FECHA_ACTUAL) {
+              return this.rows[0].FECHA_ACTUAL.substring(0, 10)
+            }
+            return 'Fecha Actual'
         },
         montoAnteriorHeader(){
-            return this.rows[0].FECHA_ANTERIOR.substring(0, 10)
+            if (Array.isArray(this.rows) && this.rows.length && this.rows[0].FECHA_ANTERIOR) {
+              return this.rows[0].FECHA_ANTERIOR.substring(0, 10)
+            }
+            return 'Fecha Anterior'
         },
         onFilterTextBoxChanged() {
             this.gridApi.setQuickFilter(

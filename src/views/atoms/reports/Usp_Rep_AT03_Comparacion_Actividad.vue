@@ -189,7 +189,7 @@ export default {
       ],
       searchTerm: "",
       loading: false,
-      rows: '',
+      rows: [],
       apiMessage: '',
       gridOptions: gridDef(),
     }
@@ -218,6 +218,9 @@ export default {
             })
         this.rows = res.data.record
         this.apiMessage = res.data.message
+        if (this.gridApi) {
+          this.gridApi.refreshHeader()
+        }
       } catch (err) {
         console.error(err);
       } finally {
@@ -241,10 +244,16 @@ export default {
       this.gridApi.refreshCells();
     },
     montoActualHeader() {
-      return this.rows[0].FECHA_ACTUAL.substring(0, 10)
+      if (Array.isArray(this.rows) && this.rows.length && this.rows[0].FECHA_ACTUAL) {
+        return this.rows[0].FECHA_ACTUAL.substring(0, 10)
+      }
+      return 'Fecha Actual'
     },
     montoAnteriorHeader() {
-      return this.rows[0].FECHA_ANTERIOR.substring(0, 10)
+      if (Array.isArray(this.rows) && this.rows.length && this.rows[0].FECHA_ANTERIOR) {
+        return this.rows[0].FECHA_ANTERIOR.substring(0, 10)
+      }
+      return 'Fecha Anterior'
     },
     onFilterTextBoxChanged() {
       this.gridApi.setQuickFilter(
@@ -262,5 +271,4 @@ export default {
 @import "~ag-grid-community/styles/ag-grid.css";
 @import "~ag-grid-community/styles/ag-theme-alpine.css";
 </style>
-
 

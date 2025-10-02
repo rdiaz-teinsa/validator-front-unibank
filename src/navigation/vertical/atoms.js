@@ -95,6 +95,7 @@ export default [
                             }
                         },
                     },
+                    /*
                     {
                         title: 'Comparación BAN06 CINU',
                         route: {
@@ -104,6 +105,8 @@ export default [
                             }
                         },
                     },
+                    */
+                    /*
                     {
                         title: 'Comparación CINU BAN06 vs AT03',
                         route: {
@@ -113,6 +116,7 @@ export default [
                             }
                         },
                     },
+                    */
                 ]
             },
             {
@@ -353,7 +357,7 @@ export default [
                             }
                         },
                     },
-                    {
+                    /*{
                         title: 'Préstamos Excluidos AT03',
                         route: {
                             name: 'USP_VAL_REP_PRESTAMOS_EXCKUIDOS',
@@ -361,7 +365,7 @@ export default [
                                 report:  'Préstamos Excluidos AT03'
                             }
                         },
-                    },
+                    },*/
                     {
                         title: 'Cuadre AT12 vs BAN06 Tipo Garantía',
                         route: {

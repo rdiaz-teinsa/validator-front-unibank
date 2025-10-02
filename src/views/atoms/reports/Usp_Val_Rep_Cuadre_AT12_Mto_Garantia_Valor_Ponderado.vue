@@ -130,12 +130,12 @@ export default {
                     field: "TIPO_GARANTIA_SB59",
                     headerClass: 'headerBlue',
                     cellClass: 'stringType',
-                  },
+                  },/*
                   {
                     headerName: "Número Colateral",
                     field: "NUMERO_COLATERAL",
                     headerClass: 'headerBlue',
-                  },
+                  },*/
                   {
                     headerName: "Monto Garantía",
                     field: "MONTO_GARANTIA",
