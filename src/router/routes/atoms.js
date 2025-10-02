@@ -266,7 +266,7 @@ export  default [
             resource: 'ACL',
             action: 'read',
         },
-    },/*
+    },
     {
         path: '/atoms/reports/USC_AT03_AT21_X_REGION',
         name: 'USC_AT03_AT21_X_REGION',
@@ -275,7 +275,7 @@ export  default [
             resource: 'ACL',
             action: 'read',
         },
-    },*/
+    },
     {
         path: '/atoms/reports/USC_AT04_AT21',
         name: 'USC_AT04_AT21',
