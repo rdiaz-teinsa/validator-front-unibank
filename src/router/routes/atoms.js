@@ -276,6 +276,7 @@ export  default [
             action: 'read',
         },
     },
+
     {
         path: '/atoms/reports/USC_AT04_AT21',
         name: 'USC_AT04_AT21',
