@@ -187,7 +187,7 @@ export default [
                         },
                     },
                     {
-                        title: 'Cuadre AT03 vs AT21x',
+                        title: 'Cuadre AT03 vs AT21',
                         route: {
                             name: 'USC_AT03_AT21_X_REGION',
                             query: {

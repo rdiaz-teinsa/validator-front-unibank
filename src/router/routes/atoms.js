@@ -124,7 +124,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Rep_AT03_Comparacion',
         name: 'Usp_Rep_AT03_Comparacion',
-        component: () => import('@/views/atoms/reports/Usp_Rep_AT03_Comparacion'),
+        component: () => import('@/views/atoms/reports/Usp_Rep_AT03_Comparacion.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -142,7 +142,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Rep_AT03_Comparacion_Region',
         name: 'Usp_Rep_AT03_Comparacion_Region',
-        component: () => import('@/views/atoms/reports/Usp_Rep_AT03_Comparacion_Region'),
+        component: () => import('@/views/atoms/reports/Usp_Rep_AT03_Comparacion_Region.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -151,7 +151,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Rep_AT12_Comparacion',
         name: 'Usp_Rep_AT12_Comparacion',
-        component: () => import('@/views/atoms/reports/Usp_Rep_AT12_Comparacion'),
+        component: () => import('@/views/atoms/reports/Usp_Rep_AT12_Comparacion.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -160,7 +160,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Rep_AT15_Comparacion',
         name: 'Usp_Rep_AT15_Comparacion',
-        component: () => import('@/views/atoms/reports/Usp_Rep_AT15_Comparacion'),
+        component: () => import('@/views/atoms/reports/Usp_Rep_AT15_Comparacion.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -169,7 +169,7 @@ export  default [
     {
         path: '/atoms/reports/Usc_AT02_AT07',
         name: 'Usc_AT02_AT07',
-        component: () => import('@/views/atoms/reports/Usc_AT02_AT07'),
+        component: () => import('@/views/atoms/reports/Usc_AT02_AT07.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -178,7 +178,7 @@ export  default [
     {
         path: '/atoms/reports/Usc_BAN06_AT03_R1',
         name: 'Usc_BAN06_AT03_R1',
-        component: () => import('@/views/atoms/reports/Usc_BAN06_AT03_R1'),
+        component: () => import('@/views/atoms/reports/Usc_BAN06_AT03_R1.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -187,7 +187,7 @@ export  default [
     {
         path: '/atoms/reports/Usc_BAN10_AT03_R1',
         name: 'Usc_BAN10_AT03_R1',
-        component: () => import('@/views/atoms/reports/Usc_BAN10_AT03_R1'),
+        component: () => import('@/views/atoms/reports/Usc_BAN10_AT03_R1.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -196,7 +196,7 @@ export  default [
     {
         path: '/atoms/reports/Usc_BAN01_AT05_R1',
         name: 'Usc_BAN01_AT05_R1',
-        component: () => import('@/views/atoms/reports/Usc_BAN01_AT05_R1'),
+        component: () => import('@/views/atoms/reports/Usc_BAN01_AT05_R1.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -205,7 +205,7 @@ export  default [
     {
         path: '/atoms/reports/USC_BAN10_AT03_R2',
         name: 'USC_BAN10_AT03_R2',
-        component: () => import('@/views/atoms/reports/USC_BAN10_AT03_R2'),
+        component: () => import('@/views/atoms/reports/USC_BAN10_AT03_R2.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -214,7 +214,7 @@ export  default [
     {
         path: '/atoms/reports/USC_BAN10_ONLY',
         name: 'USC_BAN10_ONLY',
-        component: () => import('@/views/atoms/reports/USC_BAN10_ONLY'),
+        component: () => import('@/views/atoms/reports/USC_BAN10_ONLY.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -223,7 +223,7 @@ export  default [
     {
         path: '/atoms/reports/USC_INIDICE_LIQUIDEZ_SEMANAL',
         name: 'USC_INIDICE_LIQUIDEZ_SEMANAL',
-        component: () => import('@/views/atoms/reports/USC_INIDICE_LIQUIDEZ_SEMANAL'),
+        component: () => import('@/views/atoms/reports/USC_INIDICE_LIQUIDEZ_SEMANAL.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -232,7 +232,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT15_AT07_R1',
         name: 'USC_AT15_AT07_R1',
-        component: () => import('@/views/atoms/reports/USC_AT15_AT07_R1'),
+        component: () => import('@/views/atoms/reports/USC_AT15_AT07_R1.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -241,7 +241,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT09_ALL',
         name: 'USC_AT09_ALL',
-        component: () => import('@/views/atoms/reports/USC_AT09_ALL'),
+        component: () => import('@/views/atoms/reports/USC_AT09_ALL.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -250,7 +250,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Rep_AT21_Comparacion',
         name: 'Usp_Rep_AT21_Comparacion',
-        component: () => import('@/views/atoms/reports/Usp_Rep_AT21_Comparacion'),
+        component: () => import('@/views/atoms/reports/Usp_Rep_AT21_Comparacion.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -259,16 +259,16 @@ export  default [
     {
         path: '/atoms/reports/USC_AT02_AT21_x_REGION',
         name: 'USC_AT02_AT21_x_REGION',
-        component: () => import('@/views/atoms/reports/USC_AT02_AT21_x_REGION'),
+        component: () => import('@/views/atoms/reports/USC_AT02_AT21_x_REGION.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
         },
     },
     {
-        path: '/atoms/reports/USC_AT03_AT21_X_REGION',
+        path: '/atoms/reports/USC_AT03_AT21_REGION',
         name: 'USC_AT03_AT21_X_REGION',
-        component: () => import('../src/views/atoms/reports/USC_AT03_AT21_X_REGION.vue'),
+        component: () => import('@/views/atoms/reports/USC_AT03_AT21_REGION.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -278,7 +278,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT04_AT21',
         name: 'USC_AT04_AT21',
-        component: () => import('@/views/atoms/reports/USC_AT04_AT21'),
+        component: () => import('@/views/atoms/reports/USC_AT04_AT21.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -287,7 +287,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT05_AT21',
         name: 'USC_AT05_AT21',
-        component: () => import('@/views/atoms/reports/USC_AT05_AT21'),
+        component: () => import('@/views/atoms/reports/USC_AT05_AT21.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -296,7 +296,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT12_AT21',
         name: 'USC_AT12_AT21',
-        component: () => import('@/views/atoms/reports/USC_AT12_AT21'),
+        component: () => import('@/views/atoms/reports/USC_AT12_AT21.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -305,7 +305,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT15_AT21_x_REGION',
         name: 'USC_AT15_AT21_x_REGION',
-        component: () => import('@/views/atoms/reports/USC_AT15_AT21_x_REGION'),
+        component: () => import('@/views/atoms/reports/USC_AT15_AT21_x_REGION.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -314,7 +314,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Rep_Cuadre_AT21_At12_At03VSAT02',
         name: 'Usp_Rep_Cuadre_AT21_At12_At03VSAT02',
-        component: () => import('@/views/atoms/reports/Usp_Rep_Cuadre_AT21_At12_At03VSAT02'),
+        component: () => import('@/views/atoms/reports/Usp_Rep_Cuadre_AT21_At12_At03VSAT02.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -323,7 +323,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT21_ONLY',
         name: 'USC_AT21_ONLY',
-        component: () => import('@/views/atoms/reports/USC_AT21_ONLY'),
+        component: () => import('@/views/atoms/reports/USC_AT21_ONLY.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -332,7 +332,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT21_ONLY_2',
         name: 'USC_AT21_ONLY_2',
-        component: () => import('@/views/atoms/reports/USC_AT21_ONLY_2'),
+        component: () => import('@/views/atoms/reports/USC_AT21_ONLY_2.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -341,7 +341,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT07_AT21_x_Region',
         name: 'USC_AT07_AT21_x_Region',
-        component: () => import('@/views/atoms/reports/USC_AT07_AT21_x_Region'),
+        component: () => import('@/views/atoms/reports/USC_AT07_AT21_x_Region.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -350,7 +350,7 @@ export  default [
     {
         path: '/atoms/reports/USC_BAN09_AT21',
         name: 'USC_BAN09_AT21',
-        component: () => import('@/views/atoms/reports/USC_BAN09_AT21'),
+        component: () => import('@/views/atoms/reports/USC_BAN09_AT21.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -359,7 +359,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_AT12_Mto_Garantia_Valor_Ponderado',
         name: 'Usp_Val_Rep_Cuadre_AT12_Mto_Garantia_Valor_Ponderado',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT12_Mto_Garantia_Valor_Ponderado'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT12_Mto_Garantia_Valor_Ponderado.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -368,7 +368,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_AT10_EVAP',
         name: 'Usp_Val_Rep_Cuadre_AT10_EVAP',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT10_EVAP'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT10_EVAP.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -377,7 +377,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Globales',
         name: 'Usp_Val_Rep_Cuadre_BAN06_AT03_Globales',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Globales'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Globales.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -386,7 +386,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Clasif_Diferentes',
         name: 'Usp_Val_Rep_Cuadre_BAN06_AT03_Clasif_Diferentes',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Clasif_Diferentes'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Clasif_Diferentes.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -395,7 +395,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_BAN03_AT03_Tipo_Relacion',
         name: 'Usp_Val_Rep_BAN03_AT03_Tipo_Relacion',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_BAN03_AT03_Tipo_Relacion'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_BAN03_AT03_Tipo_Relacion.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -404,7 +404,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_BAN01_AT08',
         name: 'Usp_Val_Rep_Cuadre_BAN01_AT08',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN01_AT08'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN01_AT08.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -413,7 +413,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_AT12_AT02',
         name: 'Usp_Val_Rep_Cuadre_AT12_AT02',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT12_AT02'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT12_AT02.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -422,7 +422,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_AT12_AT03',
         name: 'Usp_Val_Rep_Cuadre_AT12_AT03',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT12_AT03'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_AT12_AT03.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -431,7 +431,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_BAN03_AT03',
         name: 'Usp_Val_Rep_Cuadre_BAN03_AT03',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN03_AT03'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN03_AT03.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -440,7 +440,7 @@ export  default [
     {
         path: '/atoms/reports/Usp_Val_Rep_AT03_Revision_Cruzada_Datos',
         name: 'Usp_Val_Rep_AT03_Revision_Cruzada_Datos',
-        component: () => import('@/views/atoms/reports/Usp_Val_Rep_AT03_Revision_Cruzada_Datos'),
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_AT03_Revision_Cruzada_Datos.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -449,7 +449,7 @@ export  default [
     {
         path: '/atoms/reports/USP_VAL_REP_PRESTAMOS_EXCKUIDOS',
         name: 'USP_VAL_REP_PRESTAMOS_EXCKUIDOS',
-        component: () => import('@/views/atoms/reports/USP_VAL_REP_PRESTAMOS_EXCKUIDOS'),
+        component: () => import('@/views/atoms/reports/USP_VAL_REP_PRESTAMOS_EXCKUIDOS.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -458,7 +458,7 @@ export  default [
     {
         path: '/atoms/reports/USP_VAL_REP_CUADRE_AT12_BA06_TIPOGARANTIAS',
         name: 'USP_VAL_REP_CUADRE_AT12_BA06_TIPOGARANTIAS',
-        component: () => import('@/views/atoms/reports/USP_VAL_REP_CUADRE_AT12_BA06_TIPOGARANTIAS'),
+        component: () => import('@/views/atoms/reports/USP_VAL_REP_CUADRE_AT12_BA06_TIPOGARANTIAS.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -467,7 +467,7 @@ export  default [
     {
         path: '/atoms/reports/USP_VAL_REP_COMPARACION_BAN06_CINU',
         name: 'USP_VAL_REP_COMPARACION_BAN06_CINU',
-        component: () => import('@/views/atoms/reports/USP_VAL_REP_COMPARACION_BAN06_CINU'),
+        component: () => import('@/views/atoms/reports/USP_VAL_REP_COMPARACION_BAN06_CINU.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
@@ -476,7 +476,7 @@ export  default [
     {
         path: '/atoms/reports/USP_VAL_REP_COMPARA_CINU_BAN06_AT03',
         name: 'USP_VAL_REP_COMPARA_CINU_BAN06_AT03',
-        component: () => import('@/views/atoms/reports/USP_VAL_REP_COMPARA_CINU_BAN06_AT03'),
+        component: () => import('@/views/atoms/reports/USP_VAL_REP_COMPARA_CINU_BAN06_AT03.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
