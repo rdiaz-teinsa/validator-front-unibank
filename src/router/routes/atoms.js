@@ -1,5 +1,3 @@
-
-
 export  default [
 
     // Errors
@@ -270,7 +268,7 @@ export  default [
     {
         path: '/atoms/reports/USC_AT03_AT21_X_REGION',
         name: 'USC_AT03_AT21_X_REGION',
-        component: () => import('@/views/atoms/reports/USC_AT03_AT21_X_REGION.vue'),
+        component: () => import('../src/views/atoms/reports/USC_AT03_AT21_X_REGION.vue'),
         meta: {
             resource: 'ACL',
             action: 'read',
