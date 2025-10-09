@@ -132,11 +132,6 @@ export default {
                             headerClass: 'headerBlue',
                         },
                         {
-                            headerName: "Nº. Colateral",
-                            field: "COLLATERAL_CODE",
-                            headerClass: 'headerBlue',
-                        },
-                        {
                             headerName: "Campo",
                             field: "CAMPO",
                             headerClass: 'headerBlue',
