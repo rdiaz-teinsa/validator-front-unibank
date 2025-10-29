@@ -1,5 +1,4 @@
 import { $themeBreakpoints } from '@themeConfig'
-import {safari} from "leaflet/src/core/Browser";
 
 export default {
   namespaced: true,

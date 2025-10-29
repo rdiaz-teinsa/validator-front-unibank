@@ -57,9 +57,18 @@
 import {
   BCard, BCardTitle, BCardSubTitle, BCardBody, BCollapse,
 } from 'bootstrap-vue'
-import 'prismjs'
-import 'prismjs/themes/prism-tomorrow.css'
-import Prism from 'vue-prism-component'
+// Lightweight Prism stub to avoid bundling prismjs in production
+const Prism = {
+  name: 'PrismStub',
+  functional: true,
+  props: { language: { type: String, default: 'markup' } },
+  render(h, ctx) {
+    const data = ctx.slots().default || []
+    return h('pre', { class: `language-${ctx.props.language}` }, [
+      h('code', data),
+    ])
+  },
+}
 
 export default {
   components: {
