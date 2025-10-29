@@ -237,8 +237,8 @@ this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${t
 <style lang="scss">
 @import "@core/scss/vue/libs/vue-good-table.scss";
 
-@import "~ag-grid-community/styles/ag-grid.css";
-@import "~ag-grid-community/styles/ag-theme-alpine.css";
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 
 </style>
 

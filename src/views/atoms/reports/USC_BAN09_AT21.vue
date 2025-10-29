@@ -23,7 +23,7 @@
                 <b-spinner type="grow" variant="primary" label="Loading..." v-if="loading"/>
             </b-col>
         </b-row>
-        <div v-html="errorMsg" class="errorMsg" v-if="errorMsg"></div>
+        <div v-safe-html="errorMsg" class="errorMsg" v-if="errorMsg"></div>
        <div v-if="rows.length > 0">
             <b-row>
                 <b-col class="ag-gridContainer">
@@ -231,8 +231,7 @@ this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${t
 </script>
 
 <style lang="scss">
-@import "~ag-grid-community/styles/ag-grid.css";
-@import "~ag-grid-community/styles/ag-theme-alpine.css";
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 </style>
-
 

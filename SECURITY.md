@@ -1,6 +1,6 @@
 Security posture (short term)
 
-- Node version: Use Node 18 LTS (see `.nvmrc` and `"engines"`).
+- Node version: Use Node 20 LTS (see `.nvmrc` and `"engines"`).
 - Runtime CVEs addressed: Upgraded `axios` (1.x), `apexcharts` (>=3.24), and added overrides (`sweetalert2`, `tough-cookie`).
 - Build validated: `npm run build` passes.
 
@@ -19,7 +19,6 @@ Known risks (to be addressed next)
 
 Operational guidance
 
-- Ensure CI/CD uses Node 18.x for builds and audits.
+- Ensure CI/CD uses Node 20.x for builds and audits.
 - Prefer `npm ci` for reproducible installs in CI.
 - Treat `audit:full` findings as backlog items; prioritize ag-grid, CLI/toolchain, and Vue migration.
-

@@ -51,7 +51,7 @@ export default {
 </script>
 <style>
 .card-background{
-  background-image: url('/statsbk.png');
+  background-image: url('~@/../public/statsbk.png');
   background-size: cover;
 }
 .productIcons{

@@ -27,14 +27,13 @@ import {LicenseManager} from 'ag-grid-enterprise'
 
 LicenseManager.setLicenseKey("[TRIAL]_this_AG_Grid_Enterprise_key_( AG-043119 )_is_granted_for_evaluation_only___Use_in_production_is_not_permitted___Please_report_misuse_to_( legal@ag-grid.com )___For_help_with_purchasing_a_production_key_please_contact_( info@ag-grid.com )___All_Front-End_JavaScript_developers_working_on_the_application_would_need_to_be_licensed___This_key_will_deactivate_on_( 31 August 2023 )____[v2]_MTY5MzQzNjQwMDAwMA==458ec7edd8751844a9f17a7441427632")
 
-// Axios Mock Adapter
-// Removed axios mock adapter and fake DB from runtime bundle
-// If you still need mocks locally, load them conditionally in development only.
-// Example:
-// if (process.env.NODE_ENV === 'development') {
-//   require('@/@fake-db/db')
-// }
+// Axios Mock Adapter (dev only)
+if (process.env.NODE_ENV === 'development') {
+  // Loads axios-mock-adapter routes for local development
+  require('@/@fake-db/db')
+}
 import environment from "@/environment";
+import SafeHtml from '@/directives/safe-html'
 
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
@@ -54,6 +53,9 @@ require('@core/scss/core.scss')
 require('@/assets/scss/style.scss')
 
 Vue.config.productionTip = false
+
+// Global directives
+Vue.directive('safe-html', SafeHtml)
 
 new Vue({
     router,
@@ -106,14 +108,12 @@ Vue.mixin({
             }
         },
         onFirstDataRendered(params) {
-            const allColumnIds = [];
-            params.columnApi.getAllColumns().forEach((column) => {
-                allColumnIds.push(column.getId());
-            });
-            params.columnApi.autoSizeColumns(allColumnIds);
+            const cols = params.columnApi.getColumns ? params.columnApi.getColumns() : []
+            const allColumnIds = cols.map(col => (typeof col.getColId === 'function' ? col.getColId() : col.getId()))
+            if (allColumnIds.length) {
+                params.columnApi.autoSizeColumns(allColumnIds)
+            }
         },
 
     },
 });
-
-

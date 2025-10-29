@@ -36,7 +36,7 @@
 
     <b-row></b-row>
     <hr class="mt-2 mb-2"/>
-    <div v-html="errorMsg" class="errorMsg" v-if="errorMsg"></div>
+    <div v-safe-html="errorMsg" class="errorMsg" v-if="errorMsg"></div>
     <div v-if="creado">
       <b-row>
         <b-col md="12">
@@ -587,8 +587,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~ag-grid-community/styles/ag-grid.css";
-@import "~ag-grid-community/styles/ag-theme-alpine.css";
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 
 .infoRowClass {
   background: #f3f3f3;

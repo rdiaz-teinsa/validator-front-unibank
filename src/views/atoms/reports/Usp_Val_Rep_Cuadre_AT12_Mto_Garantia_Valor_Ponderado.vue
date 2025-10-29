@@ -225,7 +225,7 @@ this.gridOptions = gridDef(stylesData[0].logo, stylesData[0].color_primary, `${t
 </script>
 
 <style lang="scss">
-@import "~ag-grid-community/styles/ag-grid.css";
-@import "~ag-grid-community/styles/ag-theme-alpine.css";
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 </style>
 

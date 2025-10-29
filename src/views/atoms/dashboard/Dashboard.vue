@@ -471,8 +471,8 @@ export default {
 @import '@core/scss/vue/pages/dashboard-ecommerce.scss';
 @import '@core/scss/vue/libs/chart-apex.scss';
 
-@import "~ag-grid-community/styles/ag-grid.css";
-@import "~ag-grid-community/styles/ag-theme-alpine.css";
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
 
 .classPop {
   width: 400px !important;

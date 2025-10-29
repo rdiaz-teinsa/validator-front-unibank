@@ -101,7 +101,6 @@ table.vgt-table {
 }
 
 // Ag.Grid Custom
-@import "~ag-grid-community/styles/agGridMaterialFont.css";
 
 .ag-gridContainer{
   padding-bottom: 60px;
@@ -111,7 +110,7 @@ table.vgt-table {
   --ag-header-background-color: var(--primary) !important;
   --ag-font-size: 12px !important;
   --ag-font-family: "Poppins", Helvetica, Arial, serif !important;
-  --ag-icon-font-family: agGridMaterial;
+  // Use default icon font from selected theme
 }
 .ag-theme-alpine .ag-header-group-cell {
 

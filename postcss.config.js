@@ -1,5 +1,4 @@
-const rtl = require('postcss-rtl')
-
 module.exports = {
-  plugins: [rtl()],
+  // Keep LTR layout by default; no RTL transform
+  plugins: [],
 }

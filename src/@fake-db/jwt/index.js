@@ -1,5 +1,29 @@
 import mock from '@/@fake-db/mock'
-import jwt from 'jsonwebtoken'
+
+// Lightweight token helpers for browser-only dev mocks (no jsonwebtoken)
+const TOKEN_PREFIX = 'mock.'
+const createToken = (payload = {}, expiresInMs = 10 * 60 * 1000) => {
+  const data = { ...payload, exp: Date.now() + expiresInMs }
+  try {
+    return TOKEN_PREFIX + btoa(JSON.stringify(data))
+  } catch (e) {
+    return TOKEN_PREFIX + btoa(unescape(encodeURIComponent(JSON.stringify(data))))
+  }
+}
+const verifyToken = token => {
+  if (!token || typeof token !== 'string' || !token.startsWith(TOKEN_PREFIX)) {
+    throw new Error('Invalid token')
+  }
+  let json
+  try {
+    json = atob(token.slice(TOKEN_PREFIX.length))
+  } catch (e) {
+    throw new Error('Invalid token encoding')
+  }
+  const data = JSON.parse(json)
+  if (!data.exp || Date.now() > data.exp) throw new Error('Token expired')
+  return data
+}
 
 const data = {
   users: [
@@ -50,9 +74,8 @@ const data = {
 
 // ! These two secrets shall be in .env file and not in any other file
 const jwtConfig = {
-  secret: 'dd5f3089-40c3-403d-af14-d0c228b05cb4',
-  refreshTokenSecret: '7c4c1c50-3230-45bf-9eae-c9b2e401c767',
-  expireTime: '10m'
+  expireMs: 10 * 60 * 1000,
+  refreshExpireMs: 7 * 24 * 60 * 60 * 1000,
 }
 
 mock.onPost('/jwt/login').reply(request => {
@@ -65,23 +88,19 @@ mock.onPost('/jwt/login').reply(request => {
   const user = data.users.find(u => u.email === email && u.password === password)
 
   if (user) {
-    try {
-      const accessToken = jwt.sign({ id: user.id }, jwtConfig.secret, { expiresIn: jwtConfig.expireTime })
+    const accessToken = createToken({ id: user.id }, jwtConfig.expireMs)
+    const refreshToken = createToken({ id: user.id }, jwtConfig.refreshExpireMs)
 
-      const userData = { ...user }
+    const userData = { ...user }
+    delete userData.password
 
-      delete userData.password
-
-      const response = {
-        userData,
-        accessToken,
-        refreshToken,
-      }
-
-      return [200, response]
-    } catch (e) {
-      error = e
+    const response = {
+      userData,
+      accessToken,
+      refreshToken,
     }
+
+    return [200, response]
   } else {
     error = {
       email: ['Email or Password is Invalid'],
@@ -140,7 +159,7 @@ mock.onPost('/jwt/register').reply(request => {
 
     data.users.push(userData)
 
-    const accessToken = jwt.sign({ id: userData.id }, jwtConfig.secret, { expiresIn: jwtConfig.expireTime })
+    const accessToken = createToken({ id: userData.id }, jwtConfig.expireMs)
 
     const user = { ...userData }
     delete user.password
@@ -158,14 +177,11 @@ mock.onPost('/jwt/refresh-token').reply(request => {
   const { refreshToken } = JSON.parse(request.data)
 
   try {
-    const { id } = jwt.verify(refreshToken, jwtConfig.refreshTokenSecret)
-
+    const { id } = verifyToken(refreshToken)
     const userData = { ...data.users.find(user => user.id === id) }
 
-    const newAccessToken = jwt.sign({ id: userData.id }, jwtConfig.secret, { expiresIn: jwtConfig.expiresIn })
-    const newRefreshToken = jwt.sign({ id: userData.id }, jwtConfig.refreshTokenSecret, {
-      expiresIn: jwtConfig.refreshTokenExpireTime,
-    })
+    const newAccessToken = createToken({ id: userData.id }, jwtConfig.expireMs)
+    const newRefreshToken = createToken({ id: userData.id }, jwtConfig.refreshExpireMs)
 
     delete userData.password
     const response = {
@@ -173,7 +189,6 @@ mock.onPost('/jwt/refresh-token').reply(request => {
       accessToken: newAccessToken,
       refreshToken: newRefreshToken,
     }
-
     return [200, response]
   } catch (e) {
     const error = 'Invalid refresh token'
