@@ -139,7 +139,12 @@ export default {
         {
           field: 'action',
           maxWidth: 120,
-          cellRenderer: params => this.linkRendererDrill(params.data.Id_Atomo, params.data.No_Registro, params.data.ID_RECORD, params.data.Id_Error),
+          cellRenderer: params => this.linkRendererDrill(
+              params.data.Id_Atomo,
+              params.data.No_Registro,
+              this.getIdRecActual(params.data),
+              params.data.Id_Error
+          ),
         },
       ],
       descError: '',
@@ -261,7 +266,17 @@ export default {
           document.getElementById('filter-text-box').value
       );
     },
-    linkRendererDrill(idatm, idrec, idrecAct, iderr) {
+    // Some endpoints provide the current record id with different field names
+    getIdRecActual(row) {
+      return row?.No_Registro_Tabla
+          ?? row?.id_record
+          ?? row?.ID_RECORD
+          ?? row?.Id_Rec_Actual
+          ?? row?.NO_REGISTRO_ACTUAL
+          ?? row?.no_registro_actual
+          ?? null;
+    },
+    linkRendererDrill(idatm, idrec, idrecAct, idVal) {
       const link = document.createElement('a');
       link.href = '#';
       link.textContent = 'Detalles';
@@ -275,7 +290,7 @@ export default {
               idAtomo : idatm,
               idRec : idrec,
               idRecActual : idrecAct,
-              idValidacion : iderr,
+              idValidacion : idVal,
               tipo: this.$route.query.tipo
         }
            });
