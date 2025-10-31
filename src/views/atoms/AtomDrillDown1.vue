@@ -27,7 +27,6 @@
         </b-button>
       </b-col>
       <b-col class="text-right">
-
       </b-col>
     </b-row>
     <hr class="mt-2 mb-2">
