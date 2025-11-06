@@ -17,26 +17,26 @@ const router = new VueRouter({
   },
   routes: [
     { path: '/', redirect: { name: 'atom-dashboard' } },
-    ...atoms,
+    ...atoms, // atoms.js now correctly contains the callback route
     {
       path: '*',
       redirect: 'error-404',
     },
-    {
-      path: '/auth/callback',
-      name: 'auth-callback',
-      component: () => import('@/views/auth/Callback.vue'),
-      meta: {
-        layout: 'full', // O el layout que uses
-        public: true,   // Es una ruta pública
-      },
-    },
+    // The duplicate /auth/callback route has been REMOVED from here
   ],
 })
 
 router.beforeEach((to, _, next) => {
   const isLoggedIn = isUserLoggedIn()
   console.log('router.currentRoute.value: ', _)
+
+  // --- FIX FOR CALLBACK ---
+  // We must allow navigation to the public callback route
+  if (to.name === 'auth-callback') {
+    return next()
+  }
+  // --- END FIX ---
+
   if (!canNavigate(to)) {
     // Redirect to login if not logged in
     if (!isLoggedIn) return next({ name: 'atoms-auth-login' })
@@ -51,9 +51,9 @@ router.beforeEach((to, _, next) => {
     next(getHomeRouteForLoggedInUser(userData ? userData.role : null))
   }
   console.log(store.state.app.selectedBank)
-  if (store.state.app.selectedBank === null && to.path !== '/' && to.path !== '/login') {
+  if (store.state.app.selectedBank === null && to.path !== '/' && to.path !== '/login' && to.path !== '/auth/callback') { // Added callback to exception
     const appLoading = document.getElementById('loading-bg')
-    appLoading.style.display = 'none'
+    if (appLoading) appLoading.style.display = 'none'
     alert('Debe colocar un licencia y una fecha de corte')
     return next('/')
   }
