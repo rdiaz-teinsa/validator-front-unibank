@@ -2,7 +2,7 @@
   <b-card-code title="">
     <b-row>
       <b-col md="12">
-        <h3>Átomo {{ $route.query.idAtomo }}{{head1}}</h3>
+        <h3>Átomo {{ $route.query.idAtomo }} {{head1}}</h3>
         <span class="font-small-3"></span>
       </b-col>
 
@@ -27,7 +27,6 @@
         </b-button>
       </b-col>
       <b-col class="text-right">
-
       </b-col>
     </b-row>
     <hr class="mt-2 mb-2">
@@ -139,7 +138,12 @@ export default {
         {
           field: 'action',
           maxWidth: 120,
-          cellRenderer: params => this.linkRendererDrill(params.data.Id_Atomo, params.data.No_Registro, params.data.ID_RECORD, params.data.Id_Error),
+          cellRenderer: params => this.linkRendererDrill(
+              params.data.Id_Atomo,
+              params.data.No_Registro,
+              this.getIdRecActual(params.data),
+              params.data.Id_Error
+          ),
         },
       ],
       descError: '',
@@ -261,7 +265,17 @@ export default {
           document.getElementById('filter-text-box').value
       );
     },
-    linkRendererDrill(idatm, idrec, idrecAct, iderr) {
+    // Some endpoints provide the current record id with different field names
+    getIdRecActual(row) {
+      return row?.No_Registro_Tabla
+          ?? row?.id_record
+          ?? row?.ID_RECORD
+          ?? row?.Id_Rec_Actual
+          ?? row?.NO_REGISTRO_ACTUAL
+          ?? row?.no_registro_actual
+          ?? null;
+    },
+    linkRendererDrill(idatm, idrec, idrecAct, idVal) {
       const link = document.createElement('a');
       link.href = '#';
       link.textContent = 'Detalles';
@@ -270,15 +284,15 @@ export default {
         event.preventDefault();
         this.$router.push( {path: '/atoms/atom-drill-details/',
           query: {
-              codBanco: store.getters["app/getSelectedBank"],
-              fechaSib: store.getters["app/getFechaCorte"],
-              idAtomo : idatm,
-              idRec : idrec,
-              idRecActual : idrecAct,
-              idValidacion : iderr,
-              tipo: this.$route.query.tipo
-        }
-           });
+            codBanco: store.getters["app/getSelectedBank"],
+            fechaSib: store.getters["app/getFechaCorte"],
+            idAtomo : idatm,
+            idRec : idrec,
+            idRecActual : idrecAct,
+            idValidacion : idVal,
+            tipo: this.$route.query.tipo
+          }
+        });
       });
       return link;
     },
@@ -287,6 +301,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "ag-grid-community/styles/ag-grid.css";
-@import "ag-grid-community/styles/ag-theme-alpine.css";
+@import "~ag-grid-community/styles/ag-grid.css";
+@import "~ag-grid-community/styles/ag-theme-alpine.css";
 </style>

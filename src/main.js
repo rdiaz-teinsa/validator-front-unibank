@@ -7,7 +7,17 @@ import i18n from '@/libs/i18n'
 import router from './router'
 import store from './store'
 import App from './App.vue'
+import { msalInstance } from '@/auth/msalConfig'
 
+// 2. Call initialize() and mount the app AFTER it's done
+msalInstance.initialize().then(() => {
+    new Vue({
+        router,
+        store,
+        // ... other vue options
+        render: h => h(App),
+    }).$mount('#app')
+})
 
 // Global Components
 import './global-components'

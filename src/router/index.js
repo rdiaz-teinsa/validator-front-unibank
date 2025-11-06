@@ -22,6 +22,15 @@ const router = new VueRouter({
       path: '*',
       redirect: 'error-404',
     },
+    {
+      path: '/auth/callback',
+      name: 'auth-callback',
+      component: () => import('@/views/auth/Callback.vue'),
+      meta: {
+        layout: 'full', // O el layout que uses
+        public: true,   // Es una ruta pública
+      },
+    },
   ],
 })
 

@@ -1,7 +1,6 @@
 <template>
     <b-card-code :title="this.$route.query.report">
         <b-row>
-          {{error1}}
             <b-col md="4">
                 <b-form-group>
                     <b-form-datepicker
