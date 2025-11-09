@@ -21,7 +21,7 @@
         <b-row>
           <b-col md="4">
             <b-link :to="{path:'/atoms/dashboard'}">
-            <img :src="logo[0].logo" alt="Base64 Image" class="dashboardLogo ">
+              <img v-if="logo && logo[0] && logo[0].logo" :src="logo[0].logo" alt="Logo" class="dashboardLogo">
             </b-link>
           </b-col>
           <b-col md="3">
@@ -52,6 +52,7 @@
                 <b-input-group class="">
                   <b-form-input
                       id="dateCheck"
+                      ref="fechaCorte"
                       v-model="fechaCorte"
                       type="text"
                       @change="onChange()"
@@ -112,7 +113,7 @@ export default {
   },
   data() {
     return {
-      logo:'',
+      logo: [],
       selected: null,
       DatePickerFormat: 'yyyyMMdd',
       // fechaCorte: null,

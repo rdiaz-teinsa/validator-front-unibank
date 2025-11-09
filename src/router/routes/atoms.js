@@ -511,12 +511,25 @@ export  default [
         },
     },
     {
-        path: '/auth/callback',
+        path: '/oauth',
         name: 'auth-callback',
         component: () => import('@/views/auth/Callback.vue'),
         meta: {
             layout: 'full', // O el layout que uses
             public: true,   // Es una ruta pública
+            resource: 'Auth',
+            action: 'read',
+        },
+    },
+    {
+        path: '/auth/success',
+        name: 'auth-success',
+        component: () => import('@/views/auth/MsalSuccess.vue'),
+        meta: {
+            layout: 'full',
+            public: true,
+            resource: 'Auth',
+            action: 'read',
         },
     },
 ]

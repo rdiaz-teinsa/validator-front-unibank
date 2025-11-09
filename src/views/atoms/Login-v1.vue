@@ -1,15 +1,14 @@
 <template>
-  <div class="auth-wrapper auth-v1 px-2">
-    <div class="auth-inner py-2">
+  <div class="auth-wrapper auth-v1 px-5">
+    <div class="auth-inner py-4">
 
       <!-- Login v1 -->
-      <b-card class="mb-0">
-        <b-link class="brand-logo">
-          <img src="logo-h.svg" style="width: 70%;"></img>
-        </b-link>
-        <b-card-text class="mb-2">
-          Ingrese sus credenciales para iniciar.
-
+      <b-card class="mb-0 mt-5 ">
+        <div class="brand-logo">
+          <img src="logo-h.svg" style="width: 70%; max-width: 260px;"></img>
+        </div>
+        <b-card-text class="mb-2 text-center">
+          Seleccione licencia y fecha corte, luego inicie sesión con Microsoft.
         </b-card-text>
 
         <b-alert
@@ -27,136 +26,60 @@
             </p>
           </div>
         </b-alert>
-        <div class=" auth-v1">
-          <div class="">
-            <b-card class="mb-0">
-              <b-button
-                  variant="primary"
-                  block
-                  @click="loginWithMicrosoft"
-                  :disabled="loading"
-              >
-                <span v-if="!loading">Iniciar Sesión con Microsoft</span>
-                <span v-if="loading">Cargando...</span>
-              </b-button>
-            </b-card>
+        <!-- Selection fields for bank and date -->
+        <b-row class="mt-1">
+          <b-col md="6">
+            <b-form-group label="Licencia">
+              <b-form-select
+                  v-model="licencia"
+                  text-field="label"
+                  value-field="value"
+                  :options="bankDataBancos"
+              />
+            </b-form-group>
+          </b-col>
+          <b-col md="6">
+            <b-form-group label="Fecha Corte">
+              <b-form-datepicker
+                  id="dateCheck"
+                  :locale="locale"
+                  v-model="fechaCorte"
+                  :format="DatePickerFormat"
+                  :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+                  placeholder="Fecha Corte"
+              />
+            </b-form-group>
+          </b-col>
+        </b-row>
+
+        <div class=" auth-v1 mt-2">
+          <div>
+                <button
+                    type="button"
+                    class="ms-signin-btn w-100"
+                    @click="loginWithMicrosoft"
+                    :disabled="loading || !licencia || !fechaCorte"
+                    aria-label="Sign in with Microsoft"
+                >
+                <span class="ms-signin-btn__logo" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 20 20">
+                    <rect width="9" height="9" x="0" y="0" fill="#F35325"/>
+                    <rect width="9" height="9" x="11" y="0" fill="#81BC06"/>
+                    <rect width="9" height="9" x="0" y="11" fill="#05A6F0"/>
+                    <rect width="9" height="9" x="11" y="11" fill="#FFBA08"/>
+                  </svg>
+                </span>
+                  <span class="ms-signin-btn__text" v-if="!loading">Sign in with Microsoft</span>
+                  <span class="ms-signin-btn__text" v-else>Connecting…</span>
+                </button>
+
           </div>
         </div>
-
-        <!-- form -->
-        <validation-observer
-            ref="loginForm"
-            #default="{invalid}"
-        >
-          <b-form
-              class="auth-login-form mt-2"
-              @submit.prevent="login(userEmail, password)"
-          >
-            <!-- email -->
-            <b-form-group
-                label="Usuario"
-                label-for="login-email"
-            >
-              <validation-provider
-                  #default="{ errors }"
-                  name="Email"
-                  vid="email"
-              >
-                <b-form-input
-                    id="login-email"
-                    v-model="userEmail"
-                    :state="errors.length > 0 ? false:null"
-                    name="login-email"
-                    placeholder=""
-                    autocomplete="username"
-                />
-                <small class="text-danger">{{ errors[0] }}</small>
-              </validation-provider>
-            </b-form-group>
-
-            <!-- forgot password -->
-            <b-form-group>
-              <div class="d-flex justify-content-between">
-                <label for="login-password">Contraseña</label>
-                <b-link :to="{name:'auth-forgot-password'}">
-                  <small>Olvido su contraseña?</small>
-                </b-link>
-              </div>
-              <validation-provider
-                  #default="{ errors }"
-                  name="Password"
-                  vid="password"
-                  rules="required"
-              >
-                <b-input-group
-                    class="input-group-merge"
-                    :class="errors.length > 0 ? 'is-invalid':null"
-                >
-                  <b-form-input
-                      id="login-password"
-                      v-model="password"
-                      :state="errors.length > 0 ? false:null"
-                      class="form-control-merge"
-                      :type="passwordFieldType"
-                      name="login-password"
-                      placeholder=""
-                      autocomplete="current-password"
-                  />
-                  <b-input-group-append is-text>
-                    <feather-icon
-                        class="cursor-pointer"
-                        :icon="passwordToggleIcon"
-                        @click="togglePasswordVisibility"
-                    />
-                  </b-input-group-append>
-                </b-input-group>
-                <b-row class="mt-2">
-                  <b-col md="6">
-                    <b-form-select
-                        v-model="licencia"
-                        text-field="label"
-                        value-field="value"
-                        :options="bankDataBancos"
-                    />
-                  </b-col>
-                  <b-col md="6">
-                    <b-form-datepicker
-                        id="dateCheck"
-                        :locale="locale"
-                        v-model="fechaCorte"
-                        :format="DatePickerFormat"
-                        :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
-                        placeholder="Fecha Corte"
-                    />
-                  </b-col>
-                </b-row>
-                <small class="text-danger">{{ errors[0] }}</small>
-              </validation-provider>
-            </b-form-group>
-
-            <!-- checkbox -->
-            <b-form-group>
-              <b-form-checkbox
-                  id="remember-me"
-                  v-model="status"
-                  name="checkbox-1"
-              >
-                Recordarme
-              </b-form-checkbox>
-            </b-form-group>
-
-            <!-- submit buttons -->
-            <b-button
-                type="submit"
-                variant="secondary"
-                block
-                :disabled="!licencia || !fechaCorte"
-            >
-              <span v-if="!loading">Ingresar</span>
-              <span v-if="loading">Cargando...</span>
-            </b-button>
-          </b-form>
-        </validation-observer>
+        <b-card-footer>
+          <div class="mt-5 small text-right ">
+            by <a href="https://teinsa-pa.com" target="_blank" class="text-decoration-none text-secondary" title="Ir a TEINSA">Tecnología Inteligente S.A.</a>
+          </div>
+        </b-card-footer>
       </b-card>
       <!-- /Login v1 -->
     </div>
@@ -165,40 +88,11 @@
 
 <script>
 /* eslint-disable global-require */
-import {ValidationProvider, ValidationObserver} from 'vee-validate'
-import {
-  BRow,
-  BCol,
-  BLink,
-  BFormGroup,
-  BFormInput,
-  BInputGroupAppend,
-  BInputGroup,
-  BFormCheckbox,
-  BCardText,
-  BCardTitle,
-  BImg,
-  BForm,
-  BButton,
-  BAlert,
-  BCard,
-  VBTooltip, BFormSelect, BFormDatepicker,
-} from 'bootstrap-vue'
-import useJwt from '@/auth/jwt/useJwt'
-import {required, email} from '@validations'
-import {togglePasswordVisibility} from '@core/mixins/ui/forms'
-import store from '@/store/index'
-import {getHomeRouteForLoggedInUser} from '@/auth/utils'
-
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
-import environment from "@/environment";
-
-import { msalInstance, loginRequest } from '@/auth/msalConfig'; // <-- Importa la config
+import { BRow, BCol, BLink, BFormGroup, BCardText, BCardTitle, BAlert, BCard, BFormSelect, BFormDatepicker } from 'bootstrap-vue'
+import environment from "@/environment"
+import { msalInstance, loginRequest } from '@/auth/msalConfig'
 
 export default {
-  directives: {
-    'b-tooltip': VBTooltip,
-  },
   components: {
     BFormDatepicker,
     BFormSelect,
@@ -206,36 +100,17 @@ export default {
     BCol,
     BLink,
     BFormGroup,
-    BFormInput,
-    BInputGroupAppend,
-    BInputGroup,
-    BFormCheckbox,
     BCardText,
     BCardTitle,
-    BImg,
-    BForm,
-    BButton,
     BAlert,
     BCard,
-    ValidationProvider,
-    ValidationObserver,
   },
-  mixins: [togglePasswordVisibility],
+  mixins: [],
   data() {
     return {
-      // --- FIXES ADDED HERE ---
-      userEmail: '',
-      password: '',
-      // --- END OF FIXES ---
-
       loading: false,
       errorMessage: '',
-      status: '',
-      sideImg: require('@/assets/images/pages/login-v2.svg'),
-
-      // validation rules
-      required,
-      email,
+      
       selected: null,
       DatePickerFormat: 'yyyyMMdd',
       locale: 'es-US',
@@ -253,17 +128,6 @@ export default {
     this.loadLicences()
   },
   computed: {
-    passwordToggleIcon() {
-      return this.passwordFieldType === 'password' ? 'EyeIcon' : 'EyeOffIcon'
-    },
-    imgUrl() {
-      if (store.state.appConfig.layout.skin === 'dark') {
-        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.sideImg = require('@/assets/images/pages/login-v2-dark.svg')
-        return this.sideImg
-      }
-      return this.sideImg
-    },
     fechaCorte: {
       get: function(){
         return this.$store.state.app.fechaCorte
@@ -303,8 +167,25 @@ export default {
         this.loading = true;
         this.errorMessage = '';
 
+        // Validar que licencia y fechaCorte estén presentes
+        if (!this.licencia || !this.fechaCorte) {
+          this.loading = false;
+          this.errorMessage = 'Debe seleccionar una licencia y una fecha de corte.';
+          return;
+        }
+
+        // Persistir selección para restaurar tras el redirect
+        try {
+          localStorage.setItem('app.selectedBank', JSON.stringify(this.licencia));
+          localStorage.setItem('app.fechaCorte', JSON.stringify(this.fechaCorte));
+        } catch (e) {
+          // noop si localStorage falla
+        }
+
         // Esto redirigirá al usuario a la página de Microsoft
-        await msalInstance.loginRedirect(loginRequest);
+        const redirectUri = `${window.location.origin}/oauth`
+        // Force redirectUri explicitly to ensure return target
+        await msalInstance.loginRedirect({ ...loginRequest, redirectUri });
 
         // El código después de esto no se ejecutará,
         // ya que la página se redirigirá.
@@ -313,58 +194,6 @@ export default {
         console.error(err);
         this.loading = false;
         this.errorMessage = 'Error al intentar iniciar sesión con Microsoft.';
-      }
-    },
-    async login(username, password) {
-      try {
-        this.errorMessage = ''
-        this.loading = true
-        await this.$refs.loginForm.validate()
-
-        const {data} = await useJwt.login({username, password})
-        const {accessToken} = data
-        // Guard against missing/invalid token
-        if (!accessToken || accessToken === 'null' || accessToken === 'undefined') {
-          // Ensure no stale token remains
-          useJwt.setToken('')
-          localStorage.removeItem('userData')
-          this.loading = false
-          this.errorMessage = data?.message || 'Credenciales inválidas o token no emitido.'
-          return
-        }
-
-        const userData = {...data, ability: data.userData.ability}
-        // const userData = { ...data, ability: abilities.reader }
-        delete userData.accessToken
-
-        useJwt.setToken(accessToken)
-        localStorage.setItem('userData', JSON.stringify(userData))
-
-        // await this.$store.dispatch('catalog/fetchCatalogs')
-
-        this.$ability.update(userData.ability)
-        this.$router.replace(getHomeRouteForLoggedInUser(data.userData.role))
-            .then(() => {
-              this.$toast({
-                component: ToastificationContent,
-                position: 'top-right',
-                props: {
-                  title: `Bienvenido`,
-                  icon: 'CoffeeIcon',
-                  variant: 'Info',
-                  // text: `Has ingresado exitosamente como ${userData.Tval-Role}.`
-
-
-                  text: `Has ingresado exitosamente.`,
-                },
-              })
-            })
-
-        this.loading = false
-      } catch (err) {
-        console.error(err)
-        this.loading = false
-        this.errorMessage = 'Valida los datos ingresados!!'
       }
     },
     async loadLicences() {
@@ -385,7 +214,45 @@ export default {
   },
 }
 </script>
-
 <style lang="scss">
 @import '@core/scss/vue/pages/page-auth.scss';
+
+.ms-signin-btn {
+  appearance: none;
+  border: 1px solid #8A8886;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  
+  &:hover:not(:disabled) {
+    background-color: #ffffff;
+    border-color: #6e6d6c;
+  }
+  &:active:not(:disabled) {
+    background-color: #ededed;
+    border-color: #6e6d6c;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #e4e4e4; /* gray background when disabled */
+    border-color: #e1e1e1;     /* lighter gray border */
+    color: #c5c5c5;            /* muted text */
+    box-shadow: none;
+  }
+}
+.ms-signin-btn__logo {
+  display: inline-flex;
+  margin-right: 10px;
+}
+.ms-signin-btn__text {
+  font-weight: 500;
+}
 </style>

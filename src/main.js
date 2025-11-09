@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+// --- IMPORTS ---
 import Vue from 'vue'
 import {ModalPlugin, ToastPlugin} from 'bootstrap-vue'
 import VueCompositionAPI from '@vue/composition-api'
@@ -7,17 +10,7 @@ import i18n from '@/libs/i18n'
 import router from './router'
 import store from './store'
 import App from './App.vue'
-import { msalInstance } from '@/auth/msalConfig'
-
-// 2. Call initialize() and mount the app AFTER it's done
-msalInstance.initialize().then(() => {
-    new Vue({
-        router,
-        store,
-        // ... other vue options
-        render: h => h(App),
-    }).$mount('#app')
-})
+import { msalInstance } from '@/auth/msalConfig' // MSAL import
 
 // Global Components
 import './global-components'
@@ -35,15 +28,18 @@ import '@/libs/tour'
 // AG Grid Licence
 import {LicenseManager} from 'ag-grid-enterprise'
 
-LicenseManager.setLicenseKey("[TRIAL]_this_AG_Grid_Enterprise_key_( AG-043119 )_is_granted_for_evaluation_only___Use_in_production_is_not_permitted___Please_report_misuse_to_( legal@ag-grid.com )___For_help_with_purchasing_a_production_key_please_contact_( info@ag-grid.com )___All_Front-End_JavaScript_developers_working_on_the_application_would_need_to_be_licensed___This_key_will_deactivate_on_( 31 August 2023 )____[v2]_MTY5MzQzNjQwMDAwMA==458ec7edd8751844a9f17a7441427632")
-
 // Axios Mock Adapter (dev only)
 if (process.env.NODE_ENV === 'development') {
-  // Loads axios-mock-adapter routes for local development
-  require('@/@fake-db/db')
+    // Loads axios-mock-adapter routes for local development
+    require('@/@fake-db/db')
 }
 import environment from "@/environment";
 import SafeHtml from '@/directives/safe-html'
+
+// --- VUE CONFIG & PLUGINS ---
+// (Must run before new Vue())
+
+LicenseManager.setLicenseKey("[TRIAL]_this_AG_Grid_Enterprise_key_( AG-043119 )_is_granted_for_evaluation_only___Use_in_production_is_not_permitted___Please_report_misuse_to_( legal@ag-grid.com )___For_help_with_purchasing_a_production_key_please_contact_( info@ag-grid.com )___All_Front-End_JavaScript_developers_working_on_the_application_would_need_to_be_licensed___This_key_will_deactivate_on_( 31 August 2023 )____[v2]_MTY5MzQzNjQwMDAwMA==458ec7edd8751844a9f17a7441427632")
 
 // BSV Plugin Registration
 Vue.use(ToastPlugin)
@@ -53,7 +49,6 @@ Vue.use(ModalPlugin)
 Vue.use(VueCompositionAPI)
 
 // Feather font icon - For form-wizard
-// * Shall remove it if not using font-icons of feather-icons - For form-wizard
 require('@core/assets/fonts/feather/iconfont.css') // For form-wizard
 
 // import core styles
@@ -67,23 +62,11 @@ Vue.config.productionTip = false
 // Global directives
 Vue.directive('safe-html', SafeHtml)
 
-new Vue({
-    router,
-    store,
-    i18n,
-    render: h => h(App),
-}).$mount('#app')
-
+// Global Mixin
 Vue.mixin({
-    beforeRouteEnter(to, from, next) {
-        const localStorageVariable = localStorage.getItem('userData');
-
-        if (!localStorageVariable && to.path !== '/login') {
-            next('/login');
-        } else {
-            next();
-        }
-    },
+    // NOTE: beforeRouteEnter does not work in global mixins.
+    // This logic is (and should be) handled in your router/index.js (beforeEach)
+    // I am keeping your other methods.
     methods: {
         backNavigate: function () {
             this.$router.back()
@@ -111,7 +94,7 @@ Vue.mixin({
         // Cell Style Error Case
         cellErrorDisplay: function (value){
             if (value > 0){
-               return 'errorCell'
+                return 'errorCell'
             }
             else {
                 return
@@ -124,6 +107,52 @@ Vue.mixin({
                 params.columnApi.autoSizeColumns(allColumnIds)
             }
         },
-
     },
+});
+
+// --- MSAL INITIALIZATION & APP MOUNT ---
+// (Must run LAST)
+// This is the *ONLY* new Vue() mount
+msalInstance.initialize().then(() => {
+    try { console.log('[MSAL] initialized') } catch (e) {}
+    // Handle the redirect promise on *every* page load
+    msalInstance.handleRedirectPromise().then(async (response) => {
+        try { console.log('[MSAL] handleRedirectPromise response:', response) } catch (e) {}
+        // If a response is returned, MSAL just processed a login
+        if (response && response.account) {
+            msalInstance.setActiveAccount(response.account);
+            try { console.log('[MSAL] active account set:', response.account) } catch (e) {}
+        } else {
+            const acct = msalInstance.getActiveAccount();
+            try { console.log('[MSAL] no response; active account:', acct) } catch (e) {}
+        }
+
+        // NOW we mount the app, after all setup is done and MSAL is ready.
+        new Vue({
+            router,
+            store,
+            i18n,
+            render: h => h(App),
+        }).$mount('#app') // This is the single, correct mount
+
+    }).catch((err) => {
+        console.error("[MSAL] redirect processing error:", err);
+        // Mount the app even if there's an error
+        new Vue({
+            router,
+            store,
+            i18n,
+            render: h => h(App),
+        }).$mount('#app');
+    });
+
+}).catch((err) => {
+    console.error("[MSAL] initialization error:", err);
+    // Also mount the app if initialization fails
+    new Vue({
+        router,
+        store,
+        i18n,
+        render: h => h(App),
+    }).$mount('#app');
 });

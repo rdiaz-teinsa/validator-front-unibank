@@ -6,24 +6,27 @@
   >
     <template #button-content>
       <div class="d-sm-flex d-none user-nav">
-        <p class="user-name font-weight-bolder mb-0">
-          {{ userData.fullName || userData.username }}
-        </p>
-        <span class="user-status">{{ userData.role }}</span>
+        <p class="user-name font-weight-bolder mb-0">{{ displayUser.fullName || displayUser.username }}</p>
+        <span class="user-status">{{ displayUser.role }}</span>
       </div>
       <b-avatar
+        v-if="avatarSrc"
         size="40"
-        :src="userData.avatar"
+        :src="avatarSrc"
         variant="light-primary"
         badge
         class="badge-minimal"
         badge-variant="success"
+      />
+      <b-avatar
+        v-else
+        size="40"
+        variant="light-primary"
+        badge
+        class="badge-minimal d-flex align-items-center justify-content-center"
+        badge-variant="success"
       >
-        <feather-icon
-          v-if="!userData.fullName"
-          icon="UserIcon"
-          size="22"
-        />
+        <feather-icon icon="UserIcon" size="22" />
       </b-avatar>
     </template>
     <b-dropdown-item
@@ -62,6 +65,24 @@ export default {
       avatarText,
     }
   },
+  computed: {
+    // Support both shapes: flat fields or nested under userData
+    displayUser() {
+      const raw = this.userData || {}
+      const nested = (raw && raw.userData && typeof raw.userData === 'object') ? raw.userData : {}
+      return { ...raw, ...nested }
+    },
+    avatarSrc() {
+      // Only use explicit avatar; ignore `photo`. Fall back to icon otherwise.
+      const candidate = this.displayUser.avatar || ''
+      if (typeof candidate !== 'string') return ''
+      const trimmed = candidate.trim()
+      if (!trimmed) return ''
+      if (trimmed.startsWith('data:image/')) return trimmed
+      if (/^https?:\/\//i.test(trimmed)) return trimmed
+      return ''
+    }
+  },
   methods: {
     logout() {
       // Remove userData from localStorage
@@ -72,11 +93,17 @@ export default {
       // Remove userData from localStorage
       localStorage.removeItem('userData')
 
+      // Reset app-scoped selections
+      try {
+        this.$store && this.$store.commit('app/UPDATE_BANK', null)
+        this.$store && this.$store.commit('app/UPDATE_FECHA_CORTE', null)
+      } catch (e) {}
+
       // Reset ability
       this.$ability.update(initialAbility)
 
       // Redirect to login page
-      this.$router.push({ name: 'auth-login' })
+      this.$router.replace({ name: 'atoms-auth-login' })
     },
   },
 }

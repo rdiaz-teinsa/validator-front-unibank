@@ -402,6 +402,7 @@ export default {
             .then((response) => {
               this.atomsCatalog = response.data
             })
+            .catch(err => { console.error('[DASH] loadAtoms failed', err) })
       } catch (err) {
         console.error(err);
       } finally {
@@ -420,6 +421,7 @@ export default {
               .then(response => {
                 this.indicatorBoard = response.data
               })
+              .catch(err => { console.error('[DASH] getBankLoadedAtomsBoard failed', err) })
 
         }
 
@@ -435,6 +437,7 @@ export default {
             .then(response => {
               this.loadedAtoms = response.data
             })
+            .catch(err => { console.error('[DASH] getBankLoadedAtoms failed', err) })
       } catch (err) {
         console.error(err);
       } finally {

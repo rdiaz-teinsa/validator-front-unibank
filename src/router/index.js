@@ -17,7 +17,7 @@ const router = new VueRouter({
   },
   routes: [
     { path: '/', redirect: { name: 'atom-dashboard' } },
-    ...atoms, // atoms.js now correctly contains the callback route
+    ...atoms, // atoms.js contains the /auth/callback route
     {
       path: '*',
       redirect: 'error-404',
@@ -27,19 +27,23 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, _, next) => {
+  try { console.log('[NAV] to:', to.fullPath) } catch (e) {}
   const isLoggedIn = isUserLoggedIn()
-  console.log('router.currentRoute.value: ', _)
 
-  // --- FIX FOR CALLBACK ---
-  // We must allow navigation to the public callback route
-  if (to.name === 'auth-callback') {
+  // Allow public routes to bypass ACL and auth checks
+  if (to.matched.some(route => route.meta && route.meta.public === true) || to.path.startsWith('/auth/')) {
+    try { console.log('[NAV] public route bypass:', to.fullPath) } catch (e) {}
     return next()
   }
-  // --- END FIX ---
 
+  // This check is good. If the route is public (like /auth/callback),
+  // canNavigate(to) should return true.
   if (!canNavigate(to)) {
     // Redirect to login if not logged in
-    if (!isLoggedIn) return next({ name: 'atoms-auth-login' })
+    if (!isLoggedIn) {
+      try { console.log('[NAV] blocked by ACL; redirecting to login') } catch (e) {}
+      return next({ name: 'atoms-auth-login' })
+    }
 
     // If logged in => not authorized
     return next({ name: 'misc-not-authorized' })
@@ -48,22 +52,32 @@ router.beforeEach((to, _, next) => {
   // Redirect if logged in
   if (to.meta.redirectIfLoggedIn && isLoggedIn) {
     const userData = getUserData()
-    next(getHomeRouteForLoggedInUser(userData ? userData.role : null))
+    return next({ ...getHomeRouteForLoggedInUser(userData ? userData.role : null), replace: true })
   }
-  console.log(store.state.app.selectedBank)
-  if (store.state.app.selectedBank === null && to.path !== '/' && to.path !== '/login' && to.path !== '/auth/callback') { // Added callback to exception
+
+  // --- THE FIX IS HERE ---
+  // We must also check for '/auth/callback'
+  if (store.state.app.selectedBank === null &&
+      to.path !== '/' &&
+      to.path !== '/login' &&
+      to.path !== '/auth/callback' && // <-- exception for msal callback
+      to.path !== '/auth/success' && // <-- exception for msal success view
+      to.path !== '/atoms/dashboard' // <-- allow dashboard to show its own setup modal
+  ) {
     const appLoading = document.getElementById('loading-bg')
     if (appLoading) appLoading.style.display = 'none'
+
     alert('Debe colocar un licencia y una fecha de corte')
-    return next('/')
+    try { console.log('[NAV] missing licencia/fecha; redirecting to atom-dashboard') } catch (e) {}
+    return next({ name: 'atom-dashboard', replace: true })
   }
   else {
+    try { console.log('[NAV] allow:', to.fullPath) } catch (e) {}
     return next()
   }
 })
 
 // ? For splash screen
-// Remove afterEach hook if you are not using splash screen
 router.afterEach(() => {
   // Remove initial loading
   const appLoading = document.getElementById('loading-bg')
