@@ -5,10 +5,10 @@ export default {
   // Useful on localhost while backend Azure exchange is not wired.
   devAllowMsalTokenAsAccess: true,
   // Azure AD config (make it easy to switch tenants/apps)
-  azureTenantId: 'b9ae648a-1d14-45bd-a2b0-0e196e8a6678',
-  azureClientId: '91fcb762-c31f-48ef-a095-c7b17651c8ae',
+  azureTenantId: 'cf2a7612-3a84-4aac-a4cf-b029e6178dbe',
+  azureClientId: '8c72f1e3-25f2-4335-bf89-16afbbf24f9e',
   // The Application ID URI of your protected API
-  azureApiAppIdUri: 'api://91fcb762-c31f-48ef-a095-c7b17651c8ae',
+  azureApiAppIdUri: 'api://8c72f1e3-25f2-4335-bf89-16afbbf24f9e',
   // The scope name exposed by your API (e.g., 'user_impersonation')
   azureApiScopeName: 'user_impersonation',
   // Optional: override redirectUri if needed per environment
