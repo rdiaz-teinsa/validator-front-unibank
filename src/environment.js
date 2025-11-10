@@ -11,8 +11,8 @@ if (!apiBase) {
   }
 }
 export default {
-  // uri: apiBase,
-   uri: 'https://unibank.tval.online/apis',
+  uri: apiBase,
+   // uri: 'https://unibank.tval.online/apis',
   version: '1.1.5',
 
   // Dev-only: allow using MSAL tokens as app accessToken when backend returns null
