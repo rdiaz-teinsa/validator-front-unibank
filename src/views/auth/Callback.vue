@@ -159,6 +159,26 @@ export default {
 
       // Persist session (same keys as password login) — set Authorization header to MS API token
       useJwt.setToken(apiAccessToken || authResult.accessToken || authResult.idToken)
+      // Normalize username to strip IdP prefix and email domain before saving
+      try {
+        const normalizeUsername = (u) => {
+          if (!u || typeof u !== 'string') return u
+          let s = u
+          if (s.includes('#')) s = s.split('#').pop()
+          if (s.includes('@')) s = s.split('@')[0]
+          return s
+        }
+        const baseUser = (savedUser.userData && savedUser.userData.username)
+          || savedUser.username
+          || payload?.email
+          || account?.username
+        const shortUser = normalizeUsername(baseUser)
+        if (shortUser) {
+          if (!savedUser.userData || typeof savedUser.userData !== 'object') savedUser.userData = {}
+          savedUser.userData.username = shortUser
+          savedUser.username = shortUser
+        }
+      } catch (e) { /* ignore */ }
       // Attach MSAL metadata for debugging/visibility. Note: MSAL does NOT expose refresh token in browser.
       try {
         savedUser.msal = {
