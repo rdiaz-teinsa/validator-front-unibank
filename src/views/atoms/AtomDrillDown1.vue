@@ -2,7 +2,7 @@
   <b-card-code title="">
     <b-row>
       <b-col md="12">
-        <h3>Átomo {{ $route.query.idAtomo }} {{head1}}</h3>
+        <h3>Átomo {{ $route.query.idAtomo }}{{head1}}</h3>
         <span class="font-small-3"></span>
       </b-col>
 
