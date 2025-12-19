@@ -104,6 +104,7 @@ table.vgt-table {
 
 .ag-gridContainer{
   padding-bottom: 60px;
+  overflow-x: auto;
 }
 .ag-theme-alpine {
   --ag-header-foreground-color: white !important;
