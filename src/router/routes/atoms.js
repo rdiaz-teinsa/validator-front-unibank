@@ -375,6 +375,15 @@ export  default [
         },
     },
     {
+        path: '/atoms/reports/Usp_Val_Rep_Cuadre_PB01',
+        name: 'Usp_Val_Rep_Cuadre_PB01',
+        component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_PB01.vue'),
+        meta: {
+            resource: 'ACL',
+            action: 'read',
+        },
+    },
+    {
         path: '/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Globales',
         name: 'Usp_Val_Rep_Cuadre_BAN06_AT03_Globales',
         component: () => import('@/views/atoms/reports/Usp_Val_Rep_Cuadre_BAN06_AT03_Globales.vue'),
