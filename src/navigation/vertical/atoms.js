@@ -286,6 +286,15 @@ export default [
                         },
                     },
                     {
+                        title: 'Cuadre PB01',
+                        route: {
+                            name: 'Usp_Val_Rep_Cuadre_PB01',
+                            query: {
+                                report:  'Cuadre PB01'
+                            }
+                        },
+                    },
+                    {
                         title: 'Cuadre BAN06 VS AT03 Globales',
                         route: {
                             name: 'Usp_Val_Rep_Cuadre_BAN06_AT03_Globales',
