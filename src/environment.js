@@ -11,7 +11,7 @@ if (!apiBase) {
   }
 }
 export default {
-   uri: apiBase,
+  uri: apiBase,
   // uri: 'http://localhost:7443/apis',
   // uri: 'https://unibank.tval.online/apis',
   version: '1.1.5',
